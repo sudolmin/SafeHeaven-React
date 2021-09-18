@@ -1,0 +1,209 @@
+*{
+  margin: 0;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+.grid-center{
+  display: grid;
+  place-items: center;
+}
+
+.full{
+  width: 100vw;
+  height: 100vh;
+}
+
+.gradient-bg{
+  background: #1D2671;
+  background: -webkit-linear-gradient(45deg, #1D2671, #310916);
+  background: linear-gradient(45deg, #1D2671, #310916);
+  color: antiquewhite;
+}
+
+.textInput{
+  border: none;
+  border-radius: 5px;
+  height: 2.5rem;
+  width: 12rem;
+  padding-left: 12px;
+}
+
+.btn-wrapper{
+  display: grid;
+  place-items: center;
+}
+
+.btn{
+  border: solid 1px white;
+  border-radius: 5px;
+  height: 2rem;
+  width: 8rem;
+  color: #ffffff;
+  background-color: #ffffff00;
+  cursor: pointer;
+}
+
+.btn:hover{
+  color: #0e0735;
+  background-color: #ffffff;
+}
+
+.grid-wgap{
+  display: grid;
+  grid-gap: 14px;
+}
+
+.alert{
+  position: absolute;
+    top: 2rem;
+    padding: 1rem 3rem;
+    border-radius: 4px;
+    background: #ffffff99;
+    color: #220707;
+}
+.alert.success{
+  background: #15e64286;
+  color: #ccffe6;
+}
+
+.listcontainer{
+  height: 88%;
+  width: 35%;
+  border-radius: 1rem;
+  backdrop-filter: blur(8px) saturate(114%);
+  -webkit-backdrop-filter: blur(8px) saturate(114%);
+  background-color: rgba(255, 255, 255, 0.41);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  padding: 16px;
+  padding-top: 1.5rem;  
+  overflow-y: auto;
+}
+
+.listcontainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.listcontainer::-webkit-scrollbar-track {
+  background: #becfe2;
+}
+
+.listcontainer::-webkit-scrollbar-thumb {
+  background-color: #0c1d2d;
+  border-radius: 20px;
+  border: 3px solid #becfe2;
+}
+
+.listTile{
+  height: 3rem;
+  background: aliceblue;
+  display: grid;
+  grid-template-columns: 85% auto;
+  color: black;
+  align-content: center;
+  padding: 10px 24px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+  .listcontainer{
+    height: 85%;
+    width: 55%;
+  }
+  .listTile{
+
+  }
+}
+@media (max-width: 1000px) {
+  .listcontainer{
+    height: 85%;
+    width: 70%;
+  }
+  .listTile{
+
+  }
+}
+@media (max-width: 440px) {
+  .listcontainer{
+    height: 85%;
+    width: 85%;
+  }
+  .listTile{
+    grid-template-columns: 80% auto;
+  }
+}
+
+.listTile .right{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.listTile .right div{
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+.listTile .left .username{
+  font-size: 17px;
+  color: #0f0f0f;
+}
+
+.listTile .left .platform{
+  font-size: 14px;
+  color: #4a4a4a;
+}
+
+#username-form-textbox{
+  grid-area: username;
+}
+#platform-form-textbox{
+  grid-area: platform;
+}
+#password-form-textbox{
+  grid-area: password;
+}
+
+#username-form-textbox input{
+  width: calc(100% - 13px);
+  border-radius: 0;
+  border-top-left-radius: 4px;
+}
+#platform-form-textbox input{
+  width: calc(100% - 14px);
+  border-radius: 0;
+  border-top-right-radius: 4px;
+  border-left: solid 1px #00000014;
+}
+#password-form-textbox input{
+  width: calc(100% - 12px);
+  border-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-top: solid 1px #00000014;
+}
+
+#add-password-btn button{
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  border-bottom-right-radius: 42px;
+}
+#add-password-btn button:hover{
+  background-color: #309071;
+  color: #ffffff;
+}
+#add-password-btn{
+  grid-area: passlistbtn;
+}
+
+.form-wrapper{
+  display: grid;
+  grid-template-areas:
+    'username username username platform platform platform'
+    'password password password password passlistbtn passlistbtn';
+    margin-bottom: 1.5rem;
+}
