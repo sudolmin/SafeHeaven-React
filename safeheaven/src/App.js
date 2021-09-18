@@ -11,8 +11,8 @@ function App() {
   useEffect(() =>  {
     const docClient = new AWS.DynamoDB.DocumentClient({
       region: "ap-south-1", "endpoint": "https://dynamodb.ap-south-1.amazonaws.com/",
-      "accessKeyId": "AKIAXJSGIHGDRIEFGJ6A",
-      "secretAccessKey": "Rb9rKc/pKEUcP4XJSwIYNhUBb0y+sP51JfNyOo+J"
+      "accessKeyId": "youraccessKeyId",
+      "secretAccessKey": "yoursecretAccessKey"
   });
   
       docClient.get({
