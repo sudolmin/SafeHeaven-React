@@ -1,6 +1,11 @@
 *{
   margin: 0;
 }
+
+body{
+  font-family: 'Karla', sans-serif;
+}
+
 textarea:focus, input:focus{
   outline: none;
 }
@@ -111,17 +116,11 @@ textarea:focus, input:focus{
     height: 85%;
     width: 55%;
   }
-  .listTile{
-
-  }
 }
 @media (max-width: 1000px) {
   .listcontainer{
     height: 85%;
     width: 70%;
-  }
-  .listTile{
-
   }
 }
 @media (max-width: 440px) {
@@ -206,4 +205,29 @@ textarea:focus, input:focus{
     'username username username platform platform platform'
     'password password password password passlistbtn passlistbtn';
     margin-bottom: 1.5rem;
+}
+
+.new-entry-tile{
+  border-right: solid 8px #24d76c;
+  padding-right: 16px;
+}
+.passlist-wrap{
+  grid-template-rows: 10% 90%;
+}
+
+.brand{
+  font-family: 'Carattere', cursive;
+  font-size: 3rem;
+  height: 100%;
+  display: grid;
+  align-content: flex-end;
+  grid-template-columns: 70% 30%;
+  width: 20rem;
+  color: white;
+}
+
+#logo{
+  background-image: url(./img/safeheavenlogo.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }

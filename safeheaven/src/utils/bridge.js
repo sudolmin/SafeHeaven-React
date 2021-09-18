@@ -1,5 +1,5 @@
-const { getdata, putdata } = require("./dbHandler");
-const { cryptmd5, encryptpwd, decryptpwd } = require("./encrypt");
+const { putdata } = require("./dbHandler");
+const { cryptmd5, encryptpwd} = require("./encrypt");
 require('dotenv').config();
 
 const datetimenow = () => {
@@ -28,7 +28,7 @@ const setMasterKeyHandler=async(key)=> {
         id: "masterkey",
         date: datetimenow(),
         key: pwdhash
-    });
+    }, "keydb");
     console.log(resp);
 }
 
@@ -40,7 +40,7 @@ const setMasterKeyHandler=async(key)=> {
 async function createNewEntry(data) {
     const pwdhash = encryptpwd("jhbsduiah8ydaus",data['passwd']);
     const resp = await putdata({
-        id: data['id'].toString(),
+        id: data['id'],
         date: datetimenow(),
         platform: data['platform'],
         username: data['username'],

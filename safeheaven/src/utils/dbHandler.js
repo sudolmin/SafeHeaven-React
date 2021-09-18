@@ -21,12 +21,12 @@ async function getData(data, mode="") {
     .catch(console.error);
 }
 
-async function putdata(putdata) {
+async function putdata(putdata, tablename="safeheavendb") {
     console.log(putdata);
     docClient
         .put({
             Item: putdata,
-            TableName: "safeheavendb",
+            TableName: tablename,
         })
         .promise()
         .then((data) => {

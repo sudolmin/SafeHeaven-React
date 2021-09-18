@@ -1,6 +1,7 @@
 import { FaPencilAlt, FaRegTrashAlt} from 'react-icons/fa'
+import { decryptpwd } from '../utils/encrypt';
 
-const ListTile = ({id, username, platform, password, editTile, deleteTile}) => {
+const ListTile = ({id, username, platform, password, editTile, deleteTile, newEle}) => {
 
     function removeEntry(){
         deleteTile(id);
@@ -9,15 +10,29 @@ const ListTile = ({id, username, platform, password, editTile, deleteTile}) => {
         const data = {
             "id": id,
             "username": username,
-            "passwd": password,
+            "passwd": newEle?password: decryptpwd("mas",password),
             "platform": platform
         };
         editTile(data);
     }
 
+    function showPwd() {
+        if (newEle) {
+            console.log("New :: ", password);
+        } else {
+            console.log("Old :: ", decryptpwd("mas",password));
+        }
+    }
+
+    if (newEle) {
+        var tileClass = "listTile new-entry-tile";
+    } else{
+        tileClass = "listTile";
+    }
+
     return (
-        <div className="listTile">
-            <div className="left">
+        <div className={tileClass}>
+            <div className="left" onClick={showPwd}>
                 <div className="username">{username}</div>
                 <div className="platform">{platform}</div>
             </div>

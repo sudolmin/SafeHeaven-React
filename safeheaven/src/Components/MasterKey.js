@@ -19,7 +19,7 @@ const MasterKey = ({setmode}) => {
             return;
         }
         docClient.get({
-            TableName: "safeheavendb",
+            TableName: "keydb",
             Key: {
                 id: "masterkey",
             },

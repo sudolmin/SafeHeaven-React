@@ -16,7 +16,7 @@ function App() {
   });
   
       docClient.get({
-          TableName: "safeheavendb",
+          TableName: "keydb",
           Key: {
             id: "masterkey",
         },
