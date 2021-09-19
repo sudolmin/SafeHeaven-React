@@ -20,3 +20,4 @@ Custom CSS is used for the UI. Optimized for both desktop view and mobile screen
 3. Dashboard view for Safe Heaven. User can create new entries, view, edit or delete existing entries.
 
 ![user sets key](https://github.com/sudolmin/SafeHeaven-React/blob/master/snaps/dashboard.PNG?raw=true)
+![user sets key](https://github.com/sudolmin/SafeHeaven-React/blob/master/snaps/showpwd.PNG?raw=true)
