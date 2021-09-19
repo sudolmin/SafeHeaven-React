@@ -4,7 +4,7 @@ import { cryptmd5 } from "../../utils/encrypt";
 import Buttons from "../Buttons"
 import Note from "../Note";
 import TextBox from "../TextBox"
-const AWS = require("aws-sdk");
+const { docClient } = require('../../utils/secret');
 
 const MasterKey = ({setmode}) => {
 
@@ -25,11 +25,6 @@ const MasterKey = ({setmode}) => {
             return;
         }
         
-        const docClient = new AWS.DynamoDB.DocumentClient({
-            region: "ap-south-1", "endpoint": "endpoint",
-            "accessKeyId": "youraccessKeyId",
-            "secretAccessKey": "yoursecretAccessKey"
-        });
         docClient.get({
             TableName: "keydb",
             Key: {

@@ -2,20 +2,14 @@ import { useEffect, useState } from "react";
 import MasterKey from "./Components/authenticate/MasterKey";
 import PassList from "./Components/dashboard/PassList";
 import SetMasterKey from "./Components/setkey/SetMasterKey";
-const AWS = require("aws-sdk");
+const { docClient } = require('./utils/secret');
 
 function App() {
 
   const [mode, setmode] = useState("setkey");
   const [changekey, setchangekey] = useState(false);
   
-  useEffect(() =>  {
-    const docClient = new AWS.DynamoDB.DocumentClient({
-      region: "ap-south-1", "endpoint": "endpoint",
-      "accessKeyId": "youraccessKeyId",
-      "secretAccessKey": "yoursecretAccessKey"
-  });
-  
+  useEffect(() =>  {  
       docClient.get({
           TableName: "keydb",
           Key: {

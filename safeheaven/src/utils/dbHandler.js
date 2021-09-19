@@ -1,10 +1,4 @@
-const AWS = require("aws-sdk") // Or use `import` syntax for Typescript and newer ES versions
-
-const docClient = new AWS.DynamoDB.DocumentClient({
-    region: "ap-south-1", "endpoint": "endpoint",
-    "accessKeyId": "youraccessKeyId",
-    "secretAccessKey": "yoursecretAccessKey"
-});
+const { docClient } = require('./secret');
 
 async function getData(data, mode="") {
     docClient.get({
