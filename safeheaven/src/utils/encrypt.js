@@ -63,10 +63,8 @@ function decryptpwd(masterkey, encpassword) {
     return decryptedText;
 }
 
-
-
-module.exports = {
-    "cryptmd5": cryptmd5,
-    'decryptpwd': decryptpwd,
-    'encryptpwd': encryptpwd
+export {
+    cryptmd5,
+    decryptpwd,
+    encryptpwd
 }

@@ -32,11 +32,6 @@ const setMasterKeyHandler=async(key)=> {
     console.log(resp);
 }
 
-// id: 9499284
-// passwd: " fasdfasdas"
-// platform: "asd asda"
-// username: "a asfdads"
-
 async function createNewEntry(data) {
     const pwdhash = encryptpwd("jhbsduiah8ydaus",data['passwd']);
     const resp = await putdata({
@@ -44,13 +39,12 @@ async function createNewEntry(data) {
         date: datetimenow(),
         platform: data['platform'],
         username: data['username'],
-        passwd: pwdhash,
-        type: "pwdentry"
+        passwd: pwdhash
     });
     console.log(resp);
 }
 
-module.exports = {
-    "setMasterKeyHandler": setMasterKeyHandler,
-    "createNewEntry": createNewEntry,
+export {
+    setMasterKeyHandler,
+    createNewEntry,
 }

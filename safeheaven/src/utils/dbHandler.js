@@ -1,8 +1,7 @@
 const AWS = require("aws-sdk") // Or use `import` syntax for Typescript and newer ES versions
-require('dotenv').config();
 
 const docClient = new AWS.DynamoDB.DocumentClient({
-    region: "ap-south-1", "endpoint": "https://dynamodb.ap-south-1.amazonaws.com/",
+    region: "ap-south-1", "endpoint": "endpoint",
     "accessKeyId": "youraccessKeyId",
     "secretAccessKey": "yoursecretAccessKey"
 });
@@ -38,7 +37,7 @@ async function putdata(putdata, tablename="safeheavendb") {
         });
 }
 
-module.exports = {
-    "putdata": putdata,
-    "getdata": getData
+export {
+    putdata,
+    getData
 }

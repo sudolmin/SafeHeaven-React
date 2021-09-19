@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import MasterKey from "./Components/MasterKey";
-import PassList from "./Components/PassList";
-import SetMasterKey from "./Components/SetMasterKey";
+import MasterKey from "./Components/authenticate/MasterKey";
+import PassList from "./Components/dashboard/PassList";
+import SetMasterKey from "./Components/setkey/SetMasterKey";
 const AWS = require("aws-sdk");
 
 function App() {
 
   const [mode, setmode] = useState("setkey");
+  const [changekey, setchangekey] = useState(false);
   
   useEffect(() =>  {
     const docClient = new AWS.DynamoDB.DocumentClient({
-      region: "ap-south-1", "endpoint": "https://dynamodb.ap-south-1.amazonaws.com/",
+      region: "ap-south-1", "endpoint": "endpoint",
       "accessKeyId": "youraccessKeyId",
       "secretAccessKey": "yoursecretAccessKey"
   });
@@ -30,10 +31,15 @@ function App() {
       .catch(console.error);
     }, [])
 
+  function changeSetKeyMode() {
+    setchangekey(true);
+    setmode("setkey");
+  }
+
   return (
     <div className="App">
       {
-        mode==="setkey"? <SetMasterKey setmode={setmode}/>: mode==="login"? <MasterKey setmode={setmode} />:<PassList/>
+        mode==="setkey"? <SetMasterKey setmode={setmode} changekey={changekey}/>: mode==="login"? <MasterKey setmode={setmode} />:<PassList setmode={setmode} changeSetKeyMode={changeSetKeyMode}/>
       }
     </div>
   );

@@ -2,7 +2,7 @@
   margin: 0;
 }
 
-body{
+body, input, button{
   font-family: 'Karla', sans-serif;
 }
 
@@ -50,10 +50,15 @@ textarea:focus, input:focus{
 }
 
 .btn:hover{
-  color: #0e0735;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #faebd733;
 }
 
+.btn:disabled{
+  background-color: #becfe2;
+  cursor: unset;
+  color: #0c1d2d;
+}
 .grid-wgap{
   display: grid;
   grid-gap: 14px;
@@ -101,14 +106,26 @@ textarea:focus, input:focus{
 
 .listTile{
   height: 3rem;
-  background: aliceblue;
+  background: white;
   display: grid;
-  grid-template-columns: 85% auto;
+  grid-template-columns: 75% auto;
   color: black;
   align-content: center;
   padding: 10px 24px;
   border-radius: 4px;
   margin-bottom: 10px;
+  
+}
+
+.listTile .show,
+.listTile .delete,
+.listTile .edit{
+  cursor: pointer;
+}
+.listTile .show:hover,
+.listTile .delete:hover,
+.listTile .edit:hover{
+  box-shadow: inset 0 0 8px 0px #25252538;
 }
 
 @media (max-width: 1200px) {
@@ -129,13 +146,13 @@ textarea:focus, input:focus{
     width: 85%;
   }
   .listTile{
-    grid-template-columns: 80% auto;
+    grid-template-columns: 55% auto;
   }
 }
 
 .listTile .right{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   align-items: center;
   width: 100%;
   justify-content: space-between;
@@ -145,6 +162,7 @@ textarea:focus, input:focus{
   display: grid;
   place-items: center;
   height: 100%;
+  border-radius: 8px;
 }
 
 .listTile .left .username{
@@ -192,7 +210,8 @@ textarea:focus, input:focus{
   border-bottom-right-radius: 42px;
 }
 #add-password-btn button:hover{
-  background-color: #309071;
+  background: -webkit-linear-gradient(45deg, #1d267196, #3109168f);
+  background: linear-gradient(45deg, #1d267196, #3109168f);
   color: #ffffff;
 }
 #add-password-btn{
@@ -202,11 +221,24 @@ textarea:focus, input:focus{
 .form-wrapper{
   display: grid;
   grid-template-areas:
-    'username username username platform platform platform'
-    'password password password password passlistbtn passlistbtn';
+      'username username username platform platform platform'
+      'password password password password passlistbtn passlistbtn'
+      'indicator indicator indicator indicator indicator indicator';
     margin-bottom: 1.5rem;
 }
-
+@media (max-width: 600px) {
+  .form-wrapper{
+    display: grid;
+    grid-template-areas:
+      'username username username platform platform platform'
+      'password password password passlistbtn passlistbtn passlistbtn'
+      'indicator indicator indicator indicator indicator indicator';
+  }
+  
+  #password-form-textbox.passwrapper {
+    grid-template-columns: auto 10%;
+  }
+}
 .new-entry-tile{
   border-right: solid 8px #24d76c;
   padding-right: 16px;
@@ -224,6 +256,7 @@ textarea:focus, input:focus{
   grid-template-columns: 70% 30%;
   width: 20rem;
   color: white;
+  text-align: center;
 }
 
 #logo{
@@ -231,3 +264,133 @@ textarea:focus, input:focus{
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.note{
+  width: 50vw;
+  min-width: 320px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3ch;
+}
+
+@media (max-width: 500px) {
+  .grid-wgap p{
+    width: 320px;
+  }
+}
+#togglevisipass{
+  height: 1.75rem;
+  background: white;
+  display: flex;
+  padding-top: 0.88rem;
+  padding-right: 4px;
+  justify-self: flex-start;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.passwrapper{
+  grid-template-columns: auto auto;
+}
+
+/* password input in passlist component */
+#password-form-textbox.passwrapper{
+  grid-template-columns: auto 4%;
+}
+#password-form-textbox.passwrapper .textInput{
+  padding-left: 10px;
+}
+
+#password-form-textbox.passwrapper #togglevisipass{
+  padding-top: 15px;
+  padding-right: 3px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+@media (max-width: 600px) {
+  #password-form-textbox.passwrapper {
+    grid-template-columns: auto 10%;
+  }
+}
+
+.textInput.password{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  justify-self: flex-end;
+}
+.custom-strength-bar div div:nth-child(3){
+  height: 4px !important;
+}
+.custom-strength-bar div div:nth-child(5){
+  height: 6px !important;
+}
+.custom-strength-bar div div:nth-child(7){
+  height: 8px !important;
+}
+.custom-strength-bar.ingrid{
+  grid-area: indicator;
+}
+.custom-strength-bar.ingrid p{
+  color: white !important;
+}
+
+.overlay{
+  position: absolute;
+  z-index: 99;
+  background-color: #0000005c;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal{
+  height: 25vh;
+  background: #0F2027;
+  background: linear-gradient(180deg, #2C5364, #203A43, #0F2027);
+  width: 50vw;
+  max-width: 300px;
+  min-width: 270px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px 0 #00000078;
+  grid-template-rows: 50% 18% 32%;
+}
+
+/* menu settings */
+
+.setting-wrapper{
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  z-index: 100;
+}
+.settingsIcon{
+  display: flex;
+  justify-content: end;
+  cursor:pointer;
+}
+.settingsIcon svg{
+  height: 2rem;
+  width: 2rem;
+  transition: transform 1s cubic-bezier(0, 0.75, 0.68, 0.86);
+}
+.settingsIcon svg:hover{
+  transform: rotateZ(235deg);
+}
+.settingsMenu{
+  width: 10rem;
+  background: antiquewhite;
+  color: #3f2f1b;
+  padding: 1rem;
+  height: 4rem;
+  border-radius: 6px;
+}
+.settingsMenu.hide{
+  display: none;
+}
+.settingsMenu .menu-items{
+  display: grid;
+  grid-template-columns: 12% auto;
+  grid-gap: 4px;
+  padding: 8px 0;
+  font-size: 15px;
+  cursor: pointer;
+}
+

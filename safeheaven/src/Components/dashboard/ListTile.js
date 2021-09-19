@@ -1,7 +1,8 @@
 import { FaPencilAlt, FaRegTrashAlt} from 'react-icons/fa'
-import { decryptpwd } from '../utils/encrypt';
+import { BiShowAlt } from 'react-icons/bi'
+import { decryptpwd } from '../../utils/encrypt';
 
-const ListTile = ({id, username, platform, password, editTile, deleteTile, newEle}) => {
+const ListTile = ({id, username, platform, password, editTile, showModalPwd, deleteTile, newEle}) => {
 
     function removeEntry(){
         deleteTile(id);
@@ -17,11 +18,13 @@ const ListTile = ({id, username, platform, password, editTile, deleteTile, newEl
     }
 
     function showPwd() {
+        var pwd;
         if (newEle) {
-            console.log("New :: ", password);
+            pwd = password;
         } else {
-            console.log("Old :: ", decryptpwd("mas",password));
+            pwd = decryptpwd("mas",password);
         }
+        showModalPwd(pwd)
     }
 
     if (newEle) {
@@ -32,11 +35,12 @@ const ListTile = ({id, username, platform, password, editTile, deleteTile, newEl
 
     return (
         <div className={tileClass}>
-            <div className="left" onClick={showPwd}>
+            <div className="left">
                 <div className="username">{username}</div>
                 <div className="platform">{platform}</div>
             </div>
             <div className="right">
+                <div className="show" onClick={showPwd}><BiShowAlt color="#1BB16B"/></div>
                 <div className="delete" onClick={removeEntry}><FaRegTrashAlt color="#ff3333"/></div>
                 <div className="edit" onClick={editEntry}><FaPencilAlt color="#0180A7"/></div>
             </div>
