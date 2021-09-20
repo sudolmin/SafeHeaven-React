@@ -4,8 +4,8 @@ import ListTile from "./ListTile"
 import Menu from "./Menu";
 import TextBox from "../TextBox";
 import TileForm from "./TileForm";
-const AWS = require("aws-sdk");
 const { createNewEntry } = require("../../utils/bridge");
+const { docClient } = require('../../utils/secret');
 
 const PassList = ({setmode, changeSetKeyMode}) => {
 
@@ -17,11 +17,6 @@ const PassList = ({setmode, changeSetKeyMode}) => {
     const [modalpwd, setmodalpwd] = useState("");
 
     const [formid, setformid] = useState(-1);
-    const docClient = new AWS.DynamoDB.DocumentClient({
-        region: "ap-south-1", "endpoint": "https://dynamodb.ap-south-1.amazonaws.com/",
-        "accessKeyId": "AKIAXJSGIHGDRIEFGJ6A",
-        "secretAccessKey": "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"
-    });
     
     const copyToClipboard = (e) => {
         e.target.parentNode.previousElementSibling.children[0].setSelectionRange(0, 99999);
@@ -81,7 +76,6 @@ const PassList = ({setmode, changeSetKeyMode}) => {
     }
 
     useEffect(() => {
-        
         docClient.scan({
             TableName: "safeheavendb"
         })
