@@ -1,4 +1,4 @@
-# Safe Heaven ![Netlify Status](https://api.netlify.com/api/v1/badges/fafbce5b-5e0f-4bdf-bcd4-a82f50a4fb13/deploy-status)
+# Safe Heaven [![Netlify Status](https://api.netlify.com/api/v1/badges/fafbce5b-5e0f-4bdf-bcd4-a82f50a4fb13/deploy-status)](https://app.netlify.com/sites/safeheaven-assignment/deploys)
 
 ## Description:
 
